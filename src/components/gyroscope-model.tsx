@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, PerspectiveCamera, useGLTF, Html } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 
 // Model component to load the 3D object (BNO085 model)
 import { forwardRef } from "react";
@@ -12,9 +13,11 @@ const BNO085Model = forwardRef((props, ref) => {
   return <primitive object={gltf.scene} scale={[0.1, 0.1, 0.1]} ref={ref} />;
 });
 
-export default function GyroscopeModel() {
+BNO085Model.displayName = "BNO085Model";
+
+const GyroscopeModel = () => {
+  const modelRef = useRef<THREE.Group>(null);
   const [gyroData, setGyroData] = useState<{ x: number; y: number; z: number }>({ x: 0, y: 0, z: 0 });
-  const modelRef = useRef<any>(null);
 
   useEffect(() => {
     // Function to fetch gyro data from the /gyro_data.json file
@@ -27,19 +30,20 @@ export default function GyroscopeModel() {
         } else {
           console.error("Failed to fetch gyro data");
         }
+        
       } catch (error) {
         console.error("Error fetching gyro data:", error);
       }
     };
-
+    
     // Update gyro data every 100ms
     const interval = setInterval(() => {
       fetchGyroData();
     }, 100);
-
+    
     return () => clearInterval(interval); // Clean up the interval on unmount
   }, []);
-
+  
   useEffect(() => {
     if (modelRef.current) {
       // Rotate the model based on the fetched gyro data
@@ -50,14 +54,14 @@ export default function GyroscopeModel() {
       );
     }
   }, [gyroData]);
-
+  
   return (
     // <Card>
     //   <CardHeader>
     //     <CardTitle>BNO085 Gyroscope</CardTitle>
     //   </CardHeader>
     //   <CardContent>
-        <div className="h-[350px] w-[100%] rounded-lg overflow-hidden bg-black/80 mx-auto">
+    <div className="h-[350px] w-[100%] rounded-lg overflow-hidden bg-black/80 mx-auto">
           <Canvas>
             <PerspectiveCamera makeDefault position={[0, -50, 0]} rotation={[Math.PI, 0, 0]} />
             <OrbitControls />
@@ -71,7 +75,7 @@ export default function GyroscopeModel() {
                   <div style={{ color: "white" }}>Loading...</div>
                 </Html>
               }
-            >
+              >
               <BNO085Model ref={modelRef} />
             </Suspense>
           </Canvas>
@@ -80,3 +84,5 @@ export default function GyroscopeModel() {
     // </Card>
   );
 }
+
+export default GyroscopeModel;

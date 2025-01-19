@@ -18,8 +18,8 @@ const initialData = [
   { time: "19:15", logins: 25, loginsPrevHour: 40 },
 ]
 
-function generateRandomData(prevData:any) {
-  return prevData.map((entry:any) => ({
+function generateRandomData(prevData: typeof initialData) {
+  return prevData.map((entry) => ({
     ...entry,
     logins: entry.logins + Math.floor(Math.random() * 5 - 2), // small fluctuation
   }))

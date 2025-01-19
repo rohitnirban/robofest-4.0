@@ -6,14 +6,15 @@ export function VideoFeed() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    if (videoRef.current) {
+    const currentVideoRef = videoRef.current;
+    if (currentVideoRef) {
       // In a real application, you would connect to your actual video stream
       // This is just a simulation for demonstration
       navigator.mediaDevices
         .getUserMedia({ video: true })
         .then((stream) => {
-          if (videoRef.current) {
-            videoRef.current.srcObject = stream
+          if (currentVideoRef) {
+            currentVideoRef.srcObject = stream
           }
         })
         .catch((err) => {
@@ -22,8 +23,8 @@ export function VideoFeed() {
     }
 
     return () => {
-      if (videoRef.current?.srcObject) {
-        const tracks = (videoRef.current.srcObject as MediaStream).getTracks()
+      if (currentVideoRef?.srcObject) {
+        const tracks = (currentVideoRef.srcObject as MediaStream).getTracks()
         tracks.forEach(track => track.stop())
       }
     }
