@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Canvas } from "@react-three/fiber";
 import { Environment, OrbitControls, PerspectiveCamera, useGLTF, Html } from "@react-three/drei";
 import { Suspense, useEffect, useRef, useState } from "react";
