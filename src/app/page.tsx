@@ -13,7 +13,7 @@ const GyroscopeModel = dynamic(() => import("@/components/gyroscope-model"), { s
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white select-none">
       <div className="fixed bottom-2 right-2 z-10 p-1 bg-gray-100 dark:bg-gray-900">
       <ThemeToggle/>
       </div>
