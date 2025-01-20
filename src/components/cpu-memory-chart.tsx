@@ -43,7 +43,7 @@ export function CpuMemoryChart() {
     //     <CardTitle>Chart 1</CardTitle>
     //   </CardHeader>
     //   <CardContent>
-        <ResponsiveContainer width="100%" height={350}>
+        <ResponsiveContainer width="100%" height={320}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#333" />
             <XAxis dataKey="time" stroke="#888" />
