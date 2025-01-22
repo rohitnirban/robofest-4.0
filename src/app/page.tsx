@@ -3,6 +3,7 @@
 import BarcodeLogs from "@/components/barcode-logs";
 import CommandLine from "@/components/command-line";
 import { CpuMemoryChart } from "@/components/cpu-memory-chart"
+// import LiveVideo from "@/components/LiveVideo";
 import { LoginsChart } from "@/components/login-chart"
 import PathVisualization from "@/components/path-visualization";
 import ThemeToggle from "@/components/theme-toggle";
@@ -33,6 +34,7 @@ export default function DashboardPage() {
             <div className="bg-gray-100 dark:bg-gray-900 p-2 rounded text-center">
               <h2 className="text-sm font-bold mb-1">Video Feed</h2>
               <VideoFeed />
+              {/* <LiveVideo /> */}
             </div>
             <div className="bg-gray-100 dark:bg-gray-900 p-2 rounded text-center">
               <h2 className="text-sm font-bold mb-1">3D Model</h2>

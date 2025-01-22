@@ -36,5 +36,7 @@ yarn-error.log*
 next-env.d.ts
 
 
-
+# Scripts
 main.js
+main.py
+barcode.py
