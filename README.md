@@ -16,5 +16,3 @@ Switch between light and dark modes with our theme toggler. Customize your viewi
 
 ## 💻 Command Line Interface
 For the tech-savvy, our command line interface (CLI) allows you to interact with the system, execute commands, and retrieve data efficiently.
-
-Stay tuned for more exciting updates and features! 🚀
